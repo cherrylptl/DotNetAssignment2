@@ -33,6 +33,18 @@ class CarRental
         carRental.WelComeMessage();
         carRental.DisplayOptions(carRental);
     }
+    public void Initialize()
+    {
+        //Create Customer
+        Customer customer1 = new Customer("CHE123", "Cherryl Patel", "5197601596", CustomerType.VIP);
+        Customer customer2 = new Customer("HAR110", "Harit Thoriya", "5191232882", CustomerType.Premium);
+        Customer customer3 = new Customer("RAJ001", "Raj Patel", "5191237777", CustomerType.Regular);
+
+        //Create Reservation
+        reservations.Add(new Reservation(1, customer1, "Luxury", "GPS Navigation", 20.00));
+        reservations.Add(new Reservation(2, customer2, "Premium", "Chauffeur Service", 20.00));
+        reservations.Add(new Reservation(3, customer3, "Economy", "GPS Navigation", 30.00));
+    }
 
     public void WelComeMessage()
     {
@@ -78,6 +90,7 @@ class CarRental
         }
 
     }
+
     public void CreateReservation(CarRental carRental)
     {
         string? customerID = null;
@@ -265,7 +278,7 @@ class CarRental
                 Console.WriteLine("Customer Type: " + reservation.CustomerType);
                 Console.WriteLine("Car Type: " + reservation.CarType.Split('-').First().Trim());
                 Console.WriteLine("Additional Services: " + reservation.AdditionalServices.Split('-').First().Trim());
-                Console.WriteLine("Total Price: $" + reservation.TotalPrice);
+                Console.WriteLine("Total Price: $ " + reservation.TotalPrice + "/day");
                 Console.WriteLine("----------------------------------------------");
             }
         }
@@ -275,19 +288,6 @@ class CarRental
     {
         reservations.Clear();
         Console.WriteLine("All reservations cleared successfully.\n");
-    }
-
-    public void Initialize()
-    {
-        //Create Customer
-        Customer customer1 = new Customer("CHE123", "Cherryl Patel", "5197601596", CustomerType.VIP);
-        Customer customer2 = new Customer("HAR110", "Harit Thoriya", "5191232882", CustomerType.Premium);
-        Customer customer3 = new Customer("RAJ001", "Raj Patel", "5191237777", CustomerType.Regular);
-
-        //Create Reservation
-        reservations.Add(new Reservation(1, customer1, "Luxury", "GPS Navigation", 20.00));
-        reservations.Add(new Reservation(2, customer2, "Premium", "Chauffeur Service", 20.00));
-        reservations.Add(new Reservation(3, customer3, "Economy", "GPS Navigation", 30.00));
     }
 
 }
