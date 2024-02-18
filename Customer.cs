@@ -5,6 +5,7 @@ enum CustomerType
     VIP,
 }
 
+
 class Customer
 {
     public string CustomerID;

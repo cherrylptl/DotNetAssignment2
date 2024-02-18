@@ -130,14 +130,15 @@ class CarRental
             while (selectedCustomerType == null)
             {
                 Console.WriteLine("Customer Type (0 for Regular, 1 for Premium, 2 for VIP):");
+                string? input = Console.ReadLine();
 
-                if (int.TryParse(Console.ReadLine(), out int userInput) || userInput < 0 || userInput > 2)
+                if (!int.TryParse(input, out int parsedValue) || parsedValue < 0 || parsedValue > 2)
                 {
                     Console.WriteLine("Invalid input.");
                     continue;
                 }
 
-                selectedCustomerType = userInput;
+                selectedCustomerType = parsedValue;
             }
 
             customerType = selectedCustomerType == 0 ? CustomerType.Regular :
@@ -158,18 +159,17 @@ class CarRental
                 if (userInput == "yes")
                 {
                     isAdditionalServiceRequested = true;
+                    break;
                 }
                 else if (userInput == "no")
                 {
                     isAdditionalServiceRequested = false;
+                    break;
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
-                    continue;
                 }
-
-                break;
             } while (true);
 
             int additionalServicesIndex = -1;
